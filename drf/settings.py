@@ -128,8 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #cors sirve para autorizar que servidor se puede conectar al api
-CORS_ALLOWED_ORIGINS = [
-]
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 
 
 #para generar la documentacion del back
