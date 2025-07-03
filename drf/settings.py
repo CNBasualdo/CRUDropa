@@ -83,6 +83,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# imagenes
+MEDIA_URL ='media/'
+MEDIA_ROOT = BASE_DIR /'media/'
 
 
 # Password validation
@@ -135,3 +138,4 @@ CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
+

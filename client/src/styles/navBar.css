@@ -1,0 +1,40 @@
+.navbar {
+    background-color: rgb(182, 181, 181);
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.buscador {
+    background-color: white;
+    width: 33%;
+    display: flex;
+    justify-content: space-between;
+}
+.buscador button {
+    border-radius: 40%;
+    border: 0px;
+    background-color: white;
+    color: black;
+}
+.buscador input {
+    width: 90%;
+    border: 0px;
+}
+
+.carrito {
+    border: solid;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
