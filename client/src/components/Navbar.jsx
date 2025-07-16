@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineShoppingCart, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import "../styles/navBar.css";
 import imgNav from "../public/ImgComponents/iconoNav.png";
 
@@ -19,12 +19,7 @@ function Navbar() {
                         <h5>Ecomers</h5>
                     </a>
 
-                    <div className='buscador form-control  '>
-                        <input type='text' />
-                        <button>
-                            <AiOutlineSearch />
-                        </button>
-                    </div>
+
 
                     <button className='carrito'>
                         <AiOutlineShoppingCart className='icon' />
