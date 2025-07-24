@@ -1,21 +1,11 @@
 import { useEffect, useState } from "react";
-import { productsapi } from "../api/products.api.jsx";
 import "../styles/PagProducts.css";
 import "../styles/buscador.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import ProductCard from "../components/ProductCard";
 
-function PagProducts() {
-    const [products, setProducts] = useState([]);
+function PagProducts({ products, allProducts,setAllProducts }) {
     const [search, setSearch] = useState("");
-
-    useEffect(() => {
-        async function loadProducts() {
-            const res = await productsapi();
-            setProducts(res.data);
-        }
-        loadProducts();
-    }, []);
 
     //funcion de busqueda´
     const searcher = (e) => {
@@ -35,7 +25,7 @@ function PagProducts() {
 
     return (
         <>
-            <div className="topPages">
+            <div className='topPages'>
                 <div className='buscador form-control '>
                     <input
                         placeholder='Buscar'
@@ -43,15 +33,14 @@ function PagProducts() {
                         value={search}
                         onChange={searcher}
                     />
-                    <AiOutlineSearch className="iconBus" />
+                    <AiOutlineSearch className='iconBus' />
                 </div>
             </div>
 
             <div className='contProd'>
                 <div className='productos'>
                     {results.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
+                        <ProductCard key={product.id} product={product} allProducts={allProducts} setAllProducts={setAllProducts} />                    ))}
                 </div>
             </div>
         </>

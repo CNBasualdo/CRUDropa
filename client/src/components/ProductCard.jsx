@@ -1,7 +1,17 @@
 import React from "react";
 import "../styles/productCard.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-function ProductCard({ product }) {
+
+function ProductCard({ product, allProducts, setAllProducts, }) {
+    
+    const onAddProduct = product=>{
+        setAllProducts([...allProducts,product])
+
+    };console.log(allProducts)
+    
+    
+    
+    
     return (
         <div className='card'>
             <img src={product.ImgProd} className='card-img-top' />
@@ -17,7 +27,7 @@ function ProductCard({ product }) {
             </div>
 
             <div className='cardDown'>
-                <button type='button' className='btn btn-success'>
+                <button className='btn btn-success' onClick={()=> onAddProduct(product)}>
                     Añadir al carrito
                     <AiOutlineShoppingCart className='carIcon' />
                 </button>
