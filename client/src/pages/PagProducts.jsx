@@ -4,7 +4,15 @@ import "../styles/buscador.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import ProductCard from "../components/ProductCard";
 
-function PagProducts({ products, allProducts,setAllProducts }) {
+function PagProducts({
+    products,
+    allProducts,
+    total,
+    setTotal,
+    setAllProducts,
+    countProducts,
+    setCountProducts,
+}) {
     const [search, setSearch] = useState("");
 
     //funcion de busqueda´
@@ -35,12 +43,24 @@ function PagProducts({ products, allProducts,setAllProducts }) {
                     />
                     <AiOutlineSearch className='iconBus' />
                 </div>
+                
+                
             </div>
-
+<div>{total}</div>
             <div className='contProd'>
                 <div className='productos'>
                     {results.map((product) => (
-                        <ProductCard key={product.id} product={product} allProducts={allProducts} setAllProducts={setAllProducts} />                    ))}
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                            allProducts={allProducts}
+                            setAllProducts={setAllProducts}
+                            total={total}
+                            setTotal={setTotal}
+                            countProducts={countProducts}
+                            setCountProducts={setCountProducts}
+                        />
+                    ))}
                 </div>
             </div>
         </>

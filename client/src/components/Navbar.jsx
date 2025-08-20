@@ -3,7 +3,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import "../styles/navBar.css";
 import imgNav from "../public/ImgComponents/iconoNav.png";
 
-function Navbar({ allProducts, setAllProducts }) {
+function Navbar({ allProducts, total, setAllProducts,setTotal }) {
+
+    const [active, setActive] = useState(true);
+
+
     return (
         <>
             <nav className=' navbar '>
@@ -14,7 +18,7 @@ function Navbar({ allProducts, setAllProducts }) {
                             alt='Logo'
                             width='60'
                             height='60'
-                            class='d-inline-block align-text-top'
+                            className='d-inline-block align-text-top'
                         />
                         <h5>Ecomers</h5>
                     </a>
@@ -25,12 +29,13 @@ function Navbar({ allProducts, setAllProducts }) {
                         data-bs-toggle='offcanvas'
                         data-bs-target='#offcanvasRight'
                         aria-controls='offcanvasRight'
+                        onClick={()=> setActive(!actv)}
                     >
                         <AiOutlineShoppingCart className='icon' />
                     </button>
 
                     <div
-                        className='offcanvas offcanvas-end '
+                        className={`offcanvas offcanvas-end ${active ? '' :'show'}` }
                         tabindex='-1'
                         id='offcanvasRight'
                         aria-labelledby='offcanvasRightLabel'
@@ -49,20 +54,30 @@ function Navbar({ allProducts, setAllProducts }) {
                                 aria-label='Close'
                             ></button>
                         </div>
-
+                                    
                         <div className='offcanvas-body'>
-                            {
-                            allProducts.length ? (
+                            {allProducts.length ? (
                                 <>
-                                    {allProducts.map(product =>(<div key={product.id}>
-                                        <p>{product.NombreProduc}</p>
-                                        <p>{product.Precio}</p>
-
-                                    </div>))}
+                                    <div>
+                                        {allProducts.map((product) => (
+                                            <div key={product.id}>
+                                                <p>{product.NombreProduc}</p>
+                                                <p>${product.Precio}</p>
+                                                <p>Cantidad:{product.Cantidad}</p>
+                                                <div>
+                                        <h5>total:</h5>
+                                        <p>${total}</p>
+                                    </div>
+                                            </div>
+                                            
+                                        ))}
+                                    </div>
+                                    <button>Vaciar carrito</button>
                                 </>
                             ) : (
                                 <p>Carrito vacio</p>
                             )
+                            
                             }
                         </div>
                     </div>

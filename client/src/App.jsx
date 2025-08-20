@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import ProductCard from "./components/ProductCard";
 import PagProducts from "./pages/PagProducts";
 import { productsapi } from "./api/products.api";
 
 function App() {
     const [products, setProducts] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
+    const [total, setTotal] = useState(0);
+    const [countProducts, setCountProducts] = useState(0);
 
     useEffect(() => {
         async function loadProducts() {
@@ -16,12 +18,21 @@ function App() {
         loadProducts();
     }, []);
 
-    const [allProducts, setAllProducts] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [countProducts, setCountProducts] = useState(0);
+    useEffect(() => {
+        const newTotal = allProducts.reduce(
+            (acc, item) => acc + item.Precio * item.Cantidad,
+            0
+        );
+        setTotal(newTotal);
+
+        const newCount = allProducts.reduce(
+            (acc, item) => acc + item.Cantidad,
+            0
+        );
+        setCountProducts(newCount);
+    }, [allProducts]);
 
     return (
-        
         <>
             <Navbar
                 allProducts={allProducts}
